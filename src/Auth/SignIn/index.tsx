@@ -1,25 +1,17 @@
 import React, { useState, useContext } from "react";
-import { View, Text, Button, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Button, Image, TouchableOpacity } from "react-native";
 import { AuthNavProps } from "../AuthProps";
 import { Center } from "../../Center";
-import {
-  Container,
-  Header,
-  Content,
-  Form,
-  Item,
-  Input,
-  Label,
-  Title
-} from "native-base";
+import { Container, Content, Form, Item, Input, Label } from "native-base";
 import { AuthContext } from "../AuthProvider";
+import Head from "../Head";
 
 interface SignInProps {}
 
 const SignIn: React.FC<SignInProps> = ({
   navigation
 }: AuthNavProps<"signin">) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { login } = useContext(AuthContext);
@@ -32,27 +24,30 @@ const SignIn: React.FC<SignInProps> = ({
         justifyContent: "center"
       }}
     >
-      <Header transparent style={{ marginTop: 100 }}>
-        <Title style={{ color: "#000" }}>SIGN IN</Title>
-      </Header>
       <Content>
+        <Head title="SIGN IN" />
         <Form>
           <Item floatingLabel>
-            <Label>Username</Label>
+            <Label>Email</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setUsername(val)}
+              onChangeText={val => setEmail(val)}
+              value={email}
             />
           </Item>
           <Item floatingLabel>
             <Label>Password</Label>
-            <Input onChangeText={val => setPassword(val)} />
+            <Input
+              secureTextEntry
+              value={password}
+              onChangeText={val => setPassword(val)}
+            />
           </Item>
-          <View style={{ margin: 10 }}>
+          <View style={{ margin: 20 }}>
             <Button
               title="Login"
               onPress={() => {
-                login({ username, password });
+                login(email, password);
               }}
             />
           </View>
@@ -63,10 +58,10 @@ const SignIn: React.FC<SignInProps> = ({
             onPress={() => {
               navigation.navigate("forgotPassword");
             }}
-            style={{ margin: 20, flex: 1, flexDirection: "row" }}
+            style={{ margin: 10, flex: 1, flexDirection: "row" }}
           >
             <Text>Forgot password? </Text>
-            <Text style={{ color: "blue" }}>Click here</Text>
+            <Text style={{ color: "#0080FF" }}>Click here</Text>
           </TouchableOpacity>
         </Center>
         <Center>
@@ -80,7 +75,7 @@ const SignIn: React.FC<SignInProps> = ({
             }}
           >
             <Text>Don't have an account? </Text>
-            <Text style={{ color: "blue" }}>Signup</Text>
+            <Text style={{ color: "#0080FF" }}>Signup</Text>
           </TouchableOpacity>
         </Center>
       </Content>

@@ -30,9 +30,9 @@ const Routes: React.FC<routesProps> = ({}) => {
   useEffect(() => {
     AsyncStorage.getItem("user").then(userString => {
       const userDetails = JSON.parse(userString);
-      if (userDetails) {
-        login(userDetails);
-      }
+      // if (userDetails) {
+      //   login(userDetails);
+      // }
     });
   }, []);
 

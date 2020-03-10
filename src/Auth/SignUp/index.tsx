@@ -2,27 +2,19 @@ import React, { useState, useContext } from "react";
 import { View, Text, Button, TextInput, TouchableOpacity } from "react-native";
 import { AuthNavProps } from "../AuthProps";
 import { Center } from "../../Center";
-import {
-  Container,
-  Header,
-  Content,
-  Form,
-  Item,
-  Input,
-  Label,
-  Title
-} from "native-base";
+import { Container, Content, Form, Item, Input, Label } from "native-base";
 import { AuthContext } from "../AuthProvider";
+import Head from "../Head";
 
 interface SignUpProps {}
 
 const SignUp: React.FC<SignUpProps> = ({
   navigation
 }: AuthNavProps<"signup">) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
 
   return (
     <Container
@@ -32,27 +24,30 @@ const SignUp: React.FC<SignUpProps> = ({
         justifyContent: "center"
       }}
     >
-      <Header transparent style={{ marginTop: 100 }}>
-        <Title style={{ color: "#000" }}>SIGN UP</Title>
-      </Header>
       <Content>
+        <Head title="SIGN UP" />
         <Form>
           <Item floatingLabel>
-            <Label>Username</Label>
+            <Label>Email</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setUsername(val)}
+              onChangeText={val => setEmail(val)}
+              value={email}
             />
           </Item>
           <Item floatingLabel>
             <Label>Password</Label>
-            <Input onChangeText={val => setPassword(val)} />
+            <Input
+              onChangeText={val => setPassword(val)}
+              value={password}
+              secureTextEntry
+            />
           </Item>
           <View style={{ margin: 10 }}>
             <Button
               title="Sign Up"
               onPress={() => {
-                login({ username, password });
+                signup(email, password);
               }}
             />
           </View>
@@ -69,7 +64,7 @@ const SignUp: React.FC<SignUpProps> = ({
             }}
           >
             <Text>Have an account? </Text>
-            <Text style={{ color: "blue" }}>Sign In</Text>
+            <Text style={{ color: "#0080FF" }}>Sign In</Text>
           </TouchableOpacity>
         </Center>
       </Content>

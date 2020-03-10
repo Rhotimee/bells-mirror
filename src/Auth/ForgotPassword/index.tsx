@@ -13,13 +13,15 @@ import {
   Title
 } from "native-base";
 import { AuthContext } from "../AuthProvider";
+import Head from "../Head";
 
 interface ForgotPasswordProps {}
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({
   navigation
 }: AuthNavProps<"forgotPassword">) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const { forgotPassword } = useContext(AuthContext);
 
   return (
     <Container
@@ -29,17 +31,15 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
         justifyContent: "center"
       }}
     >
-      <Header transparent style={{ marginTop: 100 }}>
-        <Title style={{ color: "#000" }}>FORGOT PASSWORD</Title>
-      </Header>
       <Content>
+        <Head title="FORGOT PASSWORD" />
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>
-            <Input onChangeText={val => setUsername(val)} />
+            <Input onChangeText={val => setEmail(val)} value={email} />
           </Item>
           <View style={{ margin: 10 }}>
-            <Button title="Submit" onPress={() => {}} />
+            <Button title="Submit" onPress={() => forgotPassword(email)} />
           </View>
         </Form>
 
@@ -51,7 +51,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
             style={{ margin: 20, flex: 1, flexDirection: "row" }}
           >
             <Text>Have an account? </Text>
-            <Text style={{ color: "blue" }}>Login</Text>
+            <Text style={{ color: "#0080FF" }}>Login</Text>
           </TouchableOpacity>
         </Center>
         <Center>
@@ -65,7 +65,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
             }}
           >
             <Text>Don't have an account? </Text>
-            <Text style={{ color: "blue" }}>Signup</Text>
+            <Text style={{ color: "#0080FF" }}>Signup</Text>
           </TouchableOpacity>
         </Center>
       </Content>

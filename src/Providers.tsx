@@ -1,13 +1,16 @@
 import React from "react";
 import { AuthProvider } from "./Auth/AuthProvider";
 import Routes from "./Routes";
+import { Root } from "native-base";
 
 interface ProvidersProps {}
 
 const Providers: React.FC<ProvidersProps> = ({}) => {
   return (
     <AuthProvider>
-      <Routes />
+      <Root>
+        <Routes />
+      </Root>
     </AuthProvider>
   );
 };
