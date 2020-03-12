@@ -4,6 +4,8 @@ import { TouchableOpacity } from "react-native";
 import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
 import Post from ".";
+import HomeStack from "../Home/HomeStack";
+import Feeds from "../Home";
 
 interface PostStackProps {}
 
@@ -27,6 +29,14 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
       }}
     >
       <Stack.Screen name="Post" component={Post} />
+      <Stack.Screen
+        name="Home"
+        component={Feeds}
+        options={{
+          headerTitle: "Home",
+          headerLeft: null
+        }}
+      />
     </Stack.Navigator>
   );
 };

@@ -9,6 +9,7 @@ const Feeds = () => {
     <Center style={{ padding: 10 }}>
       <FlatList
         style={{ width: "100%" }}
+        keyExtractor={(_, index) => index.toString()}
         data={[
           {
             message:

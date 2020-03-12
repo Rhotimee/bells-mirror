@@ -4,6 +4,7 @@ import Report from ".";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
+import Feeds from "../Home";
 
 interface ReportStackProps {}
 
@@ -25,6 +26,14 @@ const ReportStack: React.FC<ReportStackProps> = ({}) => {
       }}
     >
       <Stack.Screen name="Report" component={Report} />
+      <Stack.Screen
+        name="Home"
+        component={Feeds}
+        options={{
+          headerTitle: "Home",
+          headerLeft: null
+        }}
+      />
     </Stack.Navigator>
   );
 };

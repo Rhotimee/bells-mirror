@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 interface routesProps {}
 
 const Routes: React.FC<routesProps> = ({}) => {
-  const { user, login } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState<boolean>(true);
 
   async function loadAsyncFn() {
@@ -30,9 +30,9 @@ const Routes: React.FC<routesProps> = ({}) => {
   useEffect(() => {
     AsyncStorage.getItem("user").then(userString => {
       const userDetails = JSON.parse(userString);
-      // if (userDetails) {
-      //   login(userDetails);
-      // }
+      if (userDetails) {
+        setUser(userDetails);
+      }
     });
   }, []);
 

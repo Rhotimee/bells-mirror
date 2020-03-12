@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, Button, TouchableOpacity } from "react-native";
 import {
   Container,
@@ -11,11 +11,29 @@ import {
   Header,
   Picker,
   Icon,
-  Textarea
+  Textarea,
+  Toast
 } from "native-base";
 import { Center } from "../Center";
+import { db } from "../Firebase";
+import { AuthContext } from "../Auth/AuthProvider";
+
+export const Sent = ({ text }) => (
+  <Center>
+    <Text>{text}</Text>
+  </Center>
+);
 
 const Report = ({ navigation }) => {
+  const [selected, setSelected] = useState("General Suggestion");
+  const [info, setInfo] = useState("");
+  const [infoSent, setInfoSent] = useState(false);
+  const { user } = useContext(AuthContext);
+
+  if (infoSent) {
+    return <Sent text="Report Sent" />;
+  }
+
   return (
     <Container style={{ padding: 10 }}>
       <Header transparent>
@@ -37,6 +55,8 @@ const Report = ({ navigation }) => {
               placeholder=""
               underline
               style={{ width: "100%", marginBottom: 20 }}
+              value={info}
+              onChangeText={val => setInfo(val)}
             />
           </Item>
           <Item picker style={{ marginBottom: 20 }}>
@@ -47,17 +67,52 @@ const Report = ({ navigation }) => {
               placeholder="Options"
               placeholderStyle={{ color: "#bfc6ea" }}
               placeholderIconColor="#007aff"
-              // selectedValue={this.state.selected2}
-              // onValueChange={this.onValueChange2.bind(this)}
+              selectedValue={selected}
+              onValueChange={val => {
+                setSelected(val);
+              }}
             >
-              <Picker.Item label="General Suggestion" value="key0" />
-              <Picker.Item label="Medical Emergency" value="key1" />
-              <Picker.Item label="Sexual Harassment" value="key2" />
-              <Picker.Item label="Drug Abuse" value="key3" />
+              <Picker.Item
+                label="General Suggestion"
+                value="General Suggestion"
+              />
+              <Picker.Item
+                label="Medical Emergency"
+                value="Medical Emergency"
+              />
+              <Picker.Item
+                label="Sexual Harassment"
+                value="Sexual Harassment"
+              />
+              <Picker.Item label="Drug Abuse" value="Drug Abuse" />
             </Picker>
           </Item>
           <View style={{ margin: 10 }}>
-            <Button title="Submit" onPress={() => {}} />
+            <Button
+              title="Submit"
+              disabled={infoSent}
+              onPress={() => {
+                setInfoSent(true);
+                db.collection("reports")
+                  .add({
+                    info,
+                    to: selected,
+                    from: user.email
+                  })
+                  .then(() => {
+                    setInfoSent(true);
+                    setSelected("General Suggestion");
+                    setInfo("");
+                    setTimeout(() => {
+                      setInfoSent(false), 1000;
+                    });
+                    Toast.show({
+                      text: "Report has been sent"
+                    });
+                    // navigation.navigate("Home");
+                  });
+              }}
+            />
           </View>
         </Form>
       </Content>

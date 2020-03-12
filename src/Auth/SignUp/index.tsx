@@ -13,6 +13,8 @@ const SignUp: React.FC<SignUpProps> = ({
 }: AuthNavProps<"signup">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [matric, setMatric] = useState("");
 
   const { signup } = useContext(AuthContext);
 
@@ -28,11 +30,27 @@ const SignUp: React.FC<SignUpProps> = ({
         <Head title="SIGN UP" />
         <Form>
           <Item floatingLabel>
+            <Label>Name</Label>
+            <Input
+              style={{ padding: 10 }}
+              onChangeText={val => setName(val)}
+              value={name}
+            />
+          </Item>
+          <Item floatingLabel>
             <Label>Email</Label>
             <Input
               style={{ padding: 10 }}
               onChangeText={val => setEmail(val)}
               value={email}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Matric Number</Label>
+            <Input
+              style={{ padding: 10 }}
+              onChangeText={val => setMatric(val)}
+              value={matric}
             />
           </Item>
           <Item floatingLabel>
@@ -47,7 +65,7 @@ const SignUp: React.FC<SignUpProps> = ({
             <Button
               title="Sign Up"
               onPress={() => {
-                signup(email, password);
+                signup(email, password, matric, name, "student");
               }}
             />
           </View>
