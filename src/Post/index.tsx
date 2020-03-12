@@ -56,7 +56,7 @@ const Post = ({ navigation }) => {
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width: undefined }}
+              // style={{ width: undefined }}
               placeholder="Send to"
               placeholderStyle={{ color: "#bfc6ea" }}
               placeholderIconColor="#007aff"
@@ -79,7 +79,8 @@ const Post = ({ navigation }) => {
                   .add({
                     info,
                     to: selected,
-                    from: user.email
+                    from: user.name,
+                    date: Date.now()
                   })
                   .then(() => {
                     Toast.show({

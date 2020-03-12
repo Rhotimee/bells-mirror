@@ -97,7 +97,8 @@ const Report = ({ navigation }) => {
                   .add({
                     info,
                     to: selected,
-                    from: user.email
+                    from: user.name,
+                    date: Date.now()
                   })
                   .then(() => {
                     setInfoSent(true);
