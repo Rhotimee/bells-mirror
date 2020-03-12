@@ -9,13 +9,15 @@ import { db } from "../Firebase";
 const Feeds = () => {
   const [state, setState] = useState([]);
   useEffect(() => {
-    db.collection("feeds")
-      .get()
-      .then(snapshot => {
-        const data = snapshot.docs.map(doc => doc.data());
-        setState(data);
+    return db.collection("feeds").onSnapshot(querySnapshot => {
+      const list = [];
+      querySnapshot.forEach(doc => {
+        list.push(doc.data());
       });
+      setState(list);
+    });
   }, []);
+
   return (
     <Center style={{ padding: 10 }}>
       <FlatList
