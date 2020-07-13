@@ -2,7 +2,7 @@ import React, {
   createContext,
   useState,
   SetStateAction,
-  Dispatch
+  Dispatch,
 } from "react";
 import { AsyncStorage } from "react-native";
 import { Toast } from "native-base";
@@ -38,7 +38,7 @@ export const AuthContext = createContext<{
   signup: () => {},
   logout: () => {},
   forgotPassword: () => {},
-  setUser: () => {}
+  setUser: () => {},
 });
 
 interface AuthProviderProps {}
@@ -58,8 +58,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           .collection("users")
           .where("email", "==", email)
           .get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
               console.log(doc.id, " => ", doc.data());
               AsyncStorage.setItem("user", JSON.stringify(doc.data()));
               setUser(doc.data());
@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     } catch (e) {
       Toast.show({
-        text: e.message
+        text: e.message,
       });
     }
   };
@@ -86,37 +86,36 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           name,
           email,
           matric,
-          type
+          type,
         });
 
-        console.log(user);
         const userObj = {
           name,
           email,
           type,
-          matric
+          matric,
         };
         await AsyncStorage.setItem("user", JSON.stringify(userObj));
         setUser(userObj);
       }
     } catch (e) {
       Toast.show({
-        text: e.message
+        text: e.message,
       });
     }
   };
 
-  const forgotPasswordFn = email => {
+  const forgotPasswordFn = (email) => {
     Firebase.auth()
       .sendPasswordResetEmail(email)
       .then(() => {
         Toast.show({
-          text: "Check Your email for link to reset password"
+          text: "Check Your email for link to reset password",
         });
       })
-      .catch(e => {
+      .catch((e) => {
         Toast.show({
-          text: e.message
+          text: e.message,
         });
       });
   };
@@ -132,8 +131,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           setUser(null);
           await AsyncStorage.removeItem("user");
         },
-        forgotPassword: email => forgotPasswordFn(email),
-        setUser
+        forgotPassword: (email) => forgotPasswordFn(email),
+        setUser,
       }}
     >
       {children}
