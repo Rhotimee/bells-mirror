@@ -9,7 +9,7 @@ import Head from "../Head";
 interface SignUpProps {}
 
 const SignUp: React.FC<SignUpProps> = ({
-  navigation
+  navigation,
 }: AuthNavProps<"signup">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +23,8 @@ const SignUp: React.FC<SignUpProps> = ({
       style={{
         padding: 10,
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#89CFF0",
       }}
     >
       <Content>
@@ -33,7 +34,7 @@ const SignUp: React.FC<SignUpProps> = ({
             <Label>Name</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setName(val)}
+              onChangeText={(val) => setName(val)}
               value={name}
             />
           </Item>
@@ -41,7 +42,7 @@ const SignUp: React.FC<SignUpProps> = ({
             <Label>Email</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setEmail(val)}
+              onChangeText={(val) => setEmail(val)}
               value={email}
             />
           </Item>
@@ -49,14 +50,14 @@ const SignUp: React.FC<SignUpProps> = ({
             <Label>Matric Number</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setMatric(val)}
+              onChangeText={(val) => setMatric(val)}
               value={matric}
             />
           </Item>
           <Item floatingLabel>
             <Label>Password</Label>
             <Input
-              onChangeText={val => setPassword(val)}
+              onChangeText={(val) => setPassword(val)}
               value={password}
               secureTextEntry
             />
@@ -78,7 +79,7 @@ const SignUp: React.FC<SignUpProps> = ({
             }}
             style={{
               flex: 1,
-              flexDirection: "row"
+              flexDirection: "row",
             }}
           >
             <Text>Have an account? </Text>

@@ -10,7 +10,7 @@ import {
   Item,
   Input,
   Label,
-  Title
+  Title,
 } from "native-base";
 import { AuthContext } from "../AuthProvider";
 import Head from "../Head";
@@ -18,7 +18,7 @@ import Head from "../Head";
 interface ForgotPasswordProps {}
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({
-  navigation
+  navigation,
 }: AuthNavProps<"forgotPassword">) => {
   const [email, setEmail] = useState("");
   const { forgotPassword } = useContext(AuthContext);
@@ -28,7 +28,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
       style={{
         padding: 10,
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#89CFF0",
       }}
     >
       <Content>
@@ -36,7 +37,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>
-            <Input onChangeText={val => setEmail(val)} value={email} />
+            <Input onChangeText={(val) => setEmail(val)} value={email} />
           </Item>
           <View style={{ margin: 10 }}>
             <Button title="Submit" onPress={() => forgotPassword(email)} />
@@ -61,7 +62,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
             }}
             style={{
               flex: 1,
-              flexDirection: "row"
+              flexDirection: "row",
             }}
           >
             <Text>Don't have an account? </Text>

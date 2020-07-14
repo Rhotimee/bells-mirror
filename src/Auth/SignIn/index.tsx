@@ -9,7 +9,7 @@ import Head from "../Head";
 interface SignInProps {}
 
 const SignIn: React.FC<SignInProps> = ({
-  navigation
+  navigation,
 }: AuthNavProps<"signin">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,8 @@ const SignIn: React.FC<SignInProps> = ({
       style={{
         padding: 10,
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#89CFF0",
       }}
     >
       <Content>
@@ -31,7 +32,7 @@ const SignIn: React.FC<SignInProps> = ({
             <Label>Email</Label>
             <Input
               style={{ padding: 10 }}
-              onChangeText={val => setEmail(val)}
+              onChangeText={(val) => setEmail(val)}
               value={email}
             />
           </Item>
@@ -40,7 +41,7 @@ const SignIn: React.FC<SignInProps> = ({
             <Input
               secureTextEntry
               value={password}
-              onChangeText={val => setPassword(val)}
+              onChangeText={(val) => setPassword(val)}
             />
           </Item>
           <View style={{ margin: 20 }}>
@@ -71,7 +72,7 @@ const SignIn: React.FC<SignInProps> = ({
             }}
             style={{
               flex: 1,
-              flexDirection: "row"
+              flexDirection: "row",
             }}
           >
             <Text>Don't have an account? </Text>
