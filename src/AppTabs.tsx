@@ -5,6 +5,7 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import HomeStack from "./Home/HomeStack";
 import ReportStack from "./Report/ReportStack";
 import PostStack from "./Post/PostStack";
+import { HeaderBackground } from "@react-navigation/stack";
 
 interface AppTabProps {}
 
@@ -28,11 +29,11 @@ export const AppTabs: React.FC<AppTabProps> = ({}) => {
 
           // You can return any component that you like here!
           return <AntDesign name={iconName} size={size} color={color} />;
-        }
+        },
       })}
       tabBarOptions={{
-        activeTintColor: "#0080FF",
-        inactiveTintColor: "gray"
+        activeTintColor: "#ADD8E6",
+        inactiveTintColor: "gray",
       }}
     >
       <Tabs.Screen name="Report" component={ReportStack} />

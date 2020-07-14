@@ -22,7 +22,8 @@ const ReportStack: React.FC<ReportStackProps> = ({}) => {
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10 }}>Logout</Text>
           </TouchableOpacity>
-        )
+        ),
+        headerStyle: { backgroundColor: "#ADD8E6" },
       }}
     >
       <Stack.Screen name="Report" component={Report} />
@@ -31,7 +32,7 @@ const ReportStack: React.FC<ReportStackProps> = ({}) => {
         component={Feeds}
         options={{
           headerTitle: "Home",
-          headerLeft: null
+          headerLeft: null,
         }}
       />
     </Stack.Navigator>

@@ -15,15 +15,13 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
   return (
     <Stack.Navigator
       initialRouteName="Feeds"
-      // screenOptions={{
-      //   header: () => null
-      // }}
       screenOptions={{
         headerRight: () => (
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10 }}>Logout</Text>
           </TouchableOpacity>
         ),
+        headerStyle: { backgroundColor: "#ADD8E6" },
       }}
     >
       <Stack.Screen name="Home" component={Feeds} />

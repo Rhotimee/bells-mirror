@@ -25,7 +25,8 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10 }}>Logout</Text>
           </TouchableOpacity>
-        )
+        ),
+        headerStyle: { backgroundColor: "#ADD8E6" },
       }}
     >
       <Stack.Screen name="Post" component={Post} />
@@ -34,7 +35,7 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
         component={Feeds}
         options={{
           headerTitle: "Home",
-          headerLeft: null
+          headerLeft: null,
         }}
       />
     </Stack.Navigator>

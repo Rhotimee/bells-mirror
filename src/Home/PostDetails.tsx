@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, FlatList, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableHighlight,
+  ScrollView,
+} from "react-native";
 import { Card, CardItem, Body } from "native-base";
 import { formatDistance } from "date-fns";
 
@@ -8,7 +14,9 @@ const PostDetails = ({ route }) => {
 
   console.log(info, date, from);
   return (
-    <View style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}>
+    <ScrollView
+      style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}
+    >
       <Text
         style={{
           marginBottom: 20,
@@ -43,7 +51,7 @@ const PostDetails = ({ route }) => {
           })}
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
