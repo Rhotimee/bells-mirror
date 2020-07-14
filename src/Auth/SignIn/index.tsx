@@ -27,17 +27,43 @@ const SignIn: React.FC<SignInProps> = ({
     >
       <Content>
         <Head title="SIGN IN" />
-        <Form>
-          <Item floatingLabel>
-            <Label>Email</Label>
+        <Form
+          style={{
+            marginTop: 20,
+          }}
+        >
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Email:
+            </Label>
             <Input
               style={{ padding: 10 }}
               onChangeText={(val) => setEmail(val)}
               value={email}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>Password</Label>
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Password:
+            </Label>
             <Input
               secureTextEntry
               value={password}

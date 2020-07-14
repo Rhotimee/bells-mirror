@@ -34,9 +34,19 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({
     >
       <Content>
         <Head title="FORGOT PASSWORD" />
-        <Form>
-          <Item floatingLabel>
-            <Label>Email</Label>
+        <Form
+          style={{
+            marginTop: 20,
+          }}
+        >
+          <Item rounded>
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Email:
+            </Label>
             <Input onChangeText={(val) => setEmail(val)} value={email} />
           </Item>
           <View style={{ margin: 10 }}>
