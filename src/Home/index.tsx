@@ -24,10 +24,15 @@ const Feeds = ({ navigation }) => {
         style={{ width: "100%" }}
         keyExtractor={(_, index) => index.toString()}
         data={state}
-        renderItem={({ item: { info, from, date }, index, separators }) => (
+        renderItem={({
+          item: { title, info, from, date },
+          index,
+          separators,
+        }) => (
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Details", {
+                title,
                 info,
                 from,
                 date,
@@ -39,7 +44,14 @@ const Feeds = ({ navigation }) => {
             <Card style={{ width: "100%" }}>
               <CardItem>
                 <Body>
-                  <Text>{info}</Text>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "400",
+                    }}
+                  >
+                    {title}
+                  </Text>
                 </Body>
               </CardItem>
               <CardItem

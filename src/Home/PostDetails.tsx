@@ -4,11 +4,20 @@ import { Card, CardItem, Body } from "native-base";
 import { formatDistance } from "date-fns";
 
 const PostDetails = ({ route }) => {
-  const { info, date, from } = route.params;
+  const { title, info, date, from } = route.params;
 
   console.log(info, date, from);
   return (
     <View style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}>
+      <Text
+        style={{
+          marginBottom: 20,
+          fontSize: 20,
+          fontWeight: "bold",
+        }}
+      >
+        {title}
+      </Text>
       <Text
         style={{
           marginBottom: 20,
@@ -25,7 +34,9 @@ const PostDetails = ({ route }) => {
           width: "100%",
         }}
       >
-        <Text>{from}</Text>
+        <Text>
+          Posted by: <Text style={{ fontWeight: "bold" }}>{from}</Text>
+        </Text>
         <Text>
           {formatDistance(date, Date.now(), {
             addSuffix: true,
