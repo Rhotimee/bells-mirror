@@ -32,7 +32,7 @@ export const AppTabs: React.FC<AppTabProps> = ({}) => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#ADD8E6",
+        activeTintColor: "#0E1455",
         inactiveTintColor: "gray",
       }}
     >

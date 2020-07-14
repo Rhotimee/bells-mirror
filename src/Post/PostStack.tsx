@@ -23,10 +23,11 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
         headerTitle: "Post",
         headerRight: () => (
           <TouchableOpacity onPress={() => logout()}>
-            <Text style={{ paddingRight: 10 }}>Logout</Text>
+            <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
           </TouchableOpacity>
         ),
-        headerStyle: { backgroundColor: "#ADD8E6" },
+        headerStyle: { backgroundColor: "#0E1455" },
+        headerTitleStyle: { color: "#fff" },
       }}
     >
       <Stack.Screen name="Post" component={Post} />
