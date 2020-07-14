@@ -4,6 +4,7 @@ import Feeds from ".";
 import { TouchableOpacity } from "react-native";
 import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
+import PostDetails from "./PostDetails";
 
 interface HomeStackProps {}
 
@@ -22,10 +23,11 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10 }}>Logout</Text>
           </TouchableOpacity>
-        )
+        ),
       }}
     >
       <Stack.Screen name="Home" component={Feeds} />
+      <Stack.Screen name="Details" component={PostDetails} />
     </Stack.Navigator>
   );
 };

@@ -6,12 +6,12 @@ import { Card, CardItem, Body } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { db } from "../Firebase";
 
-const Feeds = () => {
+const Feeds = ({ navigation }) => {
   const [state, setState] = useState([]);
   useEffect(() => {
-    return db.collection("feeds").onSnapshot(querySnapshot => {
+    return db.collection("feeds").onSnapshot((querySnapshot) => {
       const list = [];
-      querySnapshot.forEach(doc => {
+      querySnapshot.forEach((doc) => {
         list.push(doc.data());
       });
       setState(list);
@@ -26,7 +26,13 @@ const Feeds = () => {
         data={state}
         renderItem={({ item: { info, from, date }, index, separators }) => (
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("Details", {
+                info,
+                from,
+                date,
+              });
+            }}
             style={{ width: "100%" }}
             key={index}
           >
@@ -43,7 +49,7 @@ const Feeds = () => {
                 <Text>{from}</Text>
                 <Text>
                   {formatDistance(date, Date.now(), {
-                    addSuffix: true
+                    addSuffix: true,
                   })}
                 </Text>
               </CardItem>
