@@ -5,6 +5,7 @@ import { Center } from "../../Center";
 import { Container, Content, Form, Item, Input, Label } from "native-base";
 import { AuthContext } from "../AuthProvider";
 import Head from "../Head";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface SignUpProps {}
 
@@ -19,43 +20,89 @@ const SignUp: React.FC<SignUpProps> = ({
   const { signup } = useContext(AuthContext);
 
   return (
-    <Container
+    <ScrollView
       style={{
         padding: 10,
-        flex: 1,
-        justifyContent: "center",
         backgroundColor: "#89CFF0",
       }}
     >
       <Content>
         <Head title="SIGN UP" />
-        <Form>
-          <Item floatingLabel>
-            <Label>Name</Label>
+        <Form
+          style={{
+            marginTop: 20,
+          }}
+        >
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Name:
+            </Label>
             <Input
               style={{ padding: 10 }}
               onChangeText={(val) => setName(val)}
               value={name}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>Email</Label>
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Email:
+            </Label>
             <Input
               style={{ padding: 10 }}
               onChangeText={(val) => setEmail(val)}
               value={email}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>Matric Number</Label>
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Matric Number:
+            </Label>
             <Input
               style={{ padding: 10 }}
               onChangeText={(val) => setMatric(val)}
               value={matric}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>Password</Label>
+          <Item
+            rounded
+            style={{
+              marginBottom: 10,
+            }}
+          >
+            <Label
+              style={{
+                marginLeft: 10,
+              }}
+            >
+              Password:
+            </Label>
             <Input
               onChangeText={(val) => setPassword(val)}
               value={password}
@@ -87,7 +134,7 @@ const SignUp: React.FC<SignUpProps> = ({
           </TouchableOpacity>
         </Center>
       </Content>
-    </Container>
+    </ScrollView>
   );
 };
 
