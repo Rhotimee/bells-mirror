@@ -5,17 +5,26 @@ import {
   FlatList,
   TouchableHighlight,
   ScrollView,
+  Image,
 } from "react-native";
 import { Card, CardItem, Body } from "native-base";
 import { formatDistance } from "date-fns";
 
 const PostDetails = ({ route }) => {
-  const { title, info, date, from } = route.params;
+  const { title, info, date, from, photo } = route.params;
+
+  console.log(photo);
 
   return (
     <ScrollView
       style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}
     >
+      <Image
+        source={{
+          uri: photo,
+        }}
+        style={{ height: 200, marginBottom: 20 }}
+      />
       <Text
         style={{
           marginBottom: 20,
@@ -32,7 +41,6 @@ const PostDetails = ({ route }) => {
       >
         {info}
       </Text>
-
       <View
         style={{
           display: "flex",

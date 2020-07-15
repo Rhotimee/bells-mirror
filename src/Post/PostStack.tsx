@@ -17,9 +17,6 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
   return (
     <Stack.Navigator
       initialRouteName="Post"
-      // screenOptions={{
-      //   header: () => null
-      // }}
       screenOptions={{
         headerTitle: "Post",
         headerRight: () => (

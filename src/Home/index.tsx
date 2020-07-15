@@ -25,7 +25,7 @@ const Feeds = ({ navigation }) => {
         keyExtractor={(_, index) => index.toString()}
         data={state}
         renderItem={({
-          item: { title, info, from, date },
+          item: { title, info, from, date, photo },
           index,
           separators,
         }) => (
@@ -36,6 +36,7 @@ const Feeds = ({ navigation }) => {
                 info,
                 from,
                 date,
+                photo
               });
             }}
             style={{ width: "100%" }}
