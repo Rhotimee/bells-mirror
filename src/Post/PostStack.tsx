@@ -6,6 +6,7 @@ import { AuthContext } from "../Auth/AuthProvider";
 import Post from ".";
 import HomeStack from "../Home/HomeStack";
 import Feeds from "../Home";
+import { headerStyles } from "../utils";
 
 interface PostStackProps {}
 
@@ -26,8 +27,7 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
             <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
           </TouchableOpacity>
         ),
-        headerStyle: { backgroundColor: "#0E1455" },
-        headerTitleStyle: { color: "#fff" },
+        ...headerStyles,
       }}
     >
       <Stack.Screen name="Post" component={Post} />

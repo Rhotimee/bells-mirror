@@ -12,7 +12,6 @@ import { formatDistance } from "date-fns";
 const PostDetails = ({ route }) => {
   const { title, info, date, from } = route.params;
 
-  console.log(info, date, from);
   return (
     <ScrollView
       style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}

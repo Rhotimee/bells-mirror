@@ -52,7 +52,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         email,
         password
       );
+
       const { user } = data;
+
       if (user) {
         await db
           .collection("users")
@@ -82,7 +84,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const { user } = data;
 
       if (user) {
-        await db.collection("users").add({
+        const xx = await db.collection("users").add({
           name,
           email,
           matric,

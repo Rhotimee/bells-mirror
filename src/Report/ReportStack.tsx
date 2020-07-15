@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
 import Feeds from "../Home";
+import { headerStyles } from "../utils";
 
 interface ReportStackProps {}
 
@@ -23,8 +24,7 @@ const ReportStack: React.FC<ReportStackProps> = ({}) => {
             <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
           </TouchableOpacity>
         ),
-        headerStyle: { backgroundColor: "#0E1455" },
-        headerTitleStyle: { color: "#fff" },
+        ...headerStyles,
       }}
     >
       <Stack.Screen name="Report" component={Report} />

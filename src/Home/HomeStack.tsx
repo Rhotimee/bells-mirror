@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native";
 import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
 import PostDetails from "./PostDetails";
+import { headerStyles } from "../utils";
 
 interface HomeStackProps {}
 
@@ -21,8 +22,7 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
             <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
           </TouchableOpacity>
         ),
-        headerStyle: { backgroundColor: "#0E1455" },
-        headerTitleStyle: { color: "#fff" },
+        ...headerStyles,
       }}
     >
       <Stack.Screen name="Home" component={Feeds} />
