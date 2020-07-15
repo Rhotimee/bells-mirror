@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableHighlight } from "react-native";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
-import { Center } from "../Center";
+import { Text, FlatList } from "react-native";
+import { format } from "date-fns";
 import { Card, CardItem, Body } from "native-base";
+
+import { Center } from "../Center";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { db } from "../Firebase";
 
@@ -59,11 +60,19 @@ const Feeds = ({ navigation }) => {
                 footer
                 style={{ flex: 1, justifyContent: "space-between" }}
               >
-                <Text>{from}</Text>
-                <Text>
-                  {formatDistance(date, Date.now(), {
-                    addSuffix: true,
-                  })}
+                <Text
+                  style={{
+                    fontWeight: "200",
+                  }}
+                >
+                  {from}
+                </Text>
+                <Text
+                  style={{
+                    fontWeight: "200",
+                  }}
+                >
+                  {format(date, "MMMM dd, yyyy hh:mmaaaaa'm'")}
                 </Text>
               </CardItem>
             </Card>
