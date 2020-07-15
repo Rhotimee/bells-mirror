@@ -26,7 +26,7 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
       }}
     >
       <Stack.Screen name="Home" component={Feeds} />
-      <Stack.Screen name="Details" component={PostDetails} />
+      <Stack.Screen name="News" component={PostDetails} />
     </Stack.Navigator>
   );
 };

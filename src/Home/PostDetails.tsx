@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { Card, CardItem, Body } from "native-base";
-import { formatDistance } from "date-fns";
+import { format } from "date-fns";
 
 const PostDetails = ({ route }) => {
   const { title, info, date, from, photo } = route.params;
@@ -19,12 +19,14 @@ const PostDetails = ({ route }) => {
     <ScrollView
       style={{ backgroundColor: "#fff", height: "100%", padding: 20 }}
     >
-      <Image
-        source={{
-          uri: photo,
-        }}
-        style={{ height: 200, marginBottom: 20 }}
-      />
+      {photo && (
+        <Image
+          source={{
+            uri: photo,
+          }}
+          style={{ height: 200, marginBottom: 20 }}
+        />
+      )}
       <Text
         style={{
           marginBottom: 20,
@@ -34,6 +36,20 @@ const PostDetails = ({ route }) => {
       >
         {title}
       </Text>
+      <View
+        style={{
+          marginBottom: 20,
+        }}
+      >
+        <Text
+          style={{
+            marginBottom: 5,
+          }}
+        >
+          {from}
+        </Text>
+        <Text>{format(date, "MMMM dd, yyyy hh:mmaaaaa'm'")}</Text>
+      </View>
       <Text
         style={{
           marginBottom: 20,
@@ -41,23 +57,6 @@ const PostDetails = ({ route }) => {
       >
         {info}
       </Text>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
-        <Text>
-          Posted by: <Text style={{ fontWeight: "bold" }}>{from}</Text>
-        </Text>
-        <Text>
-          {formatDistance(date, Date.now(), {
-            addSuffix: true,
-          })}
-        </Text>
-      </View>
     </ScrollView>
   );
 };

@@ -31,12 +31,12 @@ const Feeds = ({ navigation }) => {
         }) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Details", {
+              navigation.navigate("News", {
                 title,
                 info,
                 from,
                 date,
-                photo
+                photo,
               });
             }}
             style={{ width: "100%" }}
