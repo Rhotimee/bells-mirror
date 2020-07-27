@@ -6,6 +6,7 @@ import TabNavigator from "./TabNavigator";
 import PostStack from "../Post/PostStack";
 import ReportStack from "../Report/ReportStack";
 import EmergencyContactStack from "../EmergencyContacts/EmergencyContactStack";
+import SupportStack from "../Support/SupportStack";
 
 const Drawer = createDrawerNavigator();
 
@@ -23,7 +24,7 @@ const DrawerNavigator = () => {
         name="Emergency contacts"
         component={EmergencyContactStack}
       />
-      <Drawer.Screen name="Support center" component={ReportStack} />
+      <Drawer.Screen name="Support center" component={SupportStack} />
     </Drawer.Navigator>
   );
 };
