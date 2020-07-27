@@ -6,12 +6,13 @@ import { Text } from "native-base";
 import { AuthContext } from "../Auth/AuthProvider";
 import Feeds from "../Home";
 import { headerStyles } from "../utils";
+import { Ionicons } from "@expo/vector-icons";
 
 interface ReportStackProps {}
 
 const Stack = createStackNavigator();
 
-const ReportStack: React.FC<ReportStackProps> = ({}) => {
+const ReportStack: React.FC<ReportStackProps> = ({ navigation }: any) => {
   const { logout } = useContext(AuthContext);
 
   return (
@@ -22,6 +23,18 @@ const ReportStack: React.FC<ReportStackProps> = ({}) => {
         headerRight: () => (
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
+          </TouchableOpacity>
+        ),
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={{
+              paddingLeft: 10,
+            }}
+          >
+            <Ionicons name="ios-arrow-back" size={24} color="#fff" />
           </TouchableOpacity>
         ),
         ...headerStyles,

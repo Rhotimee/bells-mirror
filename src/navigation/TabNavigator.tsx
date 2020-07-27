@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
-import HomeStack from "./Home/HomeStack";
-import ReportStack from "./Report/ReportStack";
-import PostStack from "./Post/PostStack";
 
-interface AppTabProps {}
+import HomeStack from "../Home/HomeStack";
+import PostStack from "../Post/PostStack";
+import ReportStack from "../Report/ReportStack";
 
-const Tabs = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-export const AppTabs: React.FC<AppTabProps> = ({}) => {
+const BottomTabNavigator = () => {
   return (
-    <Tabs.Navigator
+    <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -34,9 +33,11 @@ export const AppTabs: React.FC<AppTabProps> = ({}) => {
         inactiveTintColor: "gray",
       }}
     >
-      <Tabs.Screen name="Report" component={ReportStack} />
-      <Tabs.Screen name="Home" component={HomeStack} />
-      <Tabs.Screen name="Post" component={PostStack} />
-    </Tabs.Navigator>
+      <Tab.Screen name="Report" component={ReportStack} />
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Post" component={PostStack} />
+    </Tab.Navigator>
   );
 };
+
+export default BottomTabNavigator;

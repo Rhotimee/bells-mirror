@@ -7,12 +7,13 @@ import Post from ".";
 import HomeStack from "../Home/HomeStack";
 import Feeds from "../Home";
 import { headerStyles } from "../utils";
+import { Ionicons } from "@expo/vector-icons";
 
 interface PostStackProps {}
 
 const Stack = createStackNavigator();
 
-const PostStack: React.FC<PostStackProps> = ({}) => {
+const PostStack: React.FC<PostStackProps> = ({ navigation }: any) => {
   const { logout } = useContext(AuthContext);
   return (
     <Stack.Navigator
@@ -22,6 +23,18 @@ const PostStack: React.FC<PostStackProps> = ({}) => {
         headerRight: () => (
           <TouchableOpacity onPress={() => logout()}>
             <Text style={{ paddingRight: 10, color: "#fff" }}>Logout</Text>
+          </TouchableOpacity>
+        ),
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={{
+              paddingLeft: 10,
+            }}
+          >
+            <Ionicons name="ios-arrow-back" size={24} color="#fff" />
           </TouchableOpacity>
         ),
         ...headerStyles,

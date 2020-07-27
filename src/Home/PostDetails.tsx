@@ -1,19 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableHighlight,
-  ScrollView,
-  Image,
-} from "react-native";
-import { Card, CardItem, Body } from "native-base";
+import { View, Text, ScrollView, Image } from "react-native";
 import { format } from "date-fns";
 
 const PostDetails = ({ route }) => {
   const { title, info, date, from, photo } = route.params;
-
-  console.log(photo);
 
   return (
     <ScrollView

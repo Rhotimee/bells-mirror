@@ -2,12 +2,25 @@ import React, { useContext, useState, useEffect, Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthStack } from "./Auth/AuthStack";
 import { AuthContext } from "./Auth/AuthProvider";
-import { AsyncStorage, ActivityIndicator } from "react-native";
+import {
+  AsyncStorage,
+  ActivityIndicator,
+  View,
+  Text,
+  Button,
+} from "react-native";
 import { Center } from "./Center";
 import { AppTabs } from "./AppTabs";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import HomeStack from "./Home";
+import PostStack from "./Post";
+
+import DrawerNavigator from "./navigation/DrawerNavigator";
+
+const Drawer = createDrawerNavigator();
 
 interface routesProps {}
 
@@ -19,7 +32,7 @@ const Routes: React.FC<routesProps> = ({}) => {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      ...Ionicons.font
+      ...Ionicons.font,
     });
   }
 
@@ -28,7 +41,7 @@ const Routes: React.FC<routesProps> = ({}) => {
   }
 
   useEffect(() => {
-    AsyncStorage.getItem("user").then(userString => {
+    AsyncStorage.getItem("user").then((userString) => {
       const userDetails = JSON.parse(userString);
       if (userDetails) {
         setUser(userDetails);
@@ -50,7 +63,7 @@ const Routes: React.FC<routesProps> = ({}) => {
 
   return (
     <NavigationContainer>
-      {user ? <AppTabs /> : <AuthStack />}
+      {user ? <DrawerNavigator /> : <AuthStack />}
     </NavigationContainer>
   );
 };
