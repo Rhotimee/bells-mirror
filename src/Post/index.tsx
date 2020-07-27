@@ -113,7 +113,6 @@ const Post = ({ navigation }) => {
             style={{ width: 100 }}
             mode="dropdown"
             iosIcon={<Icon name="arrow-down" />}
-            // style={{ width: undefined }}
             placeholder="Send to"
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
